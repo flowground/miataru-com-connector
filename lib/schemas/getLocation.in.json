@@ -1,0 +1,44 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "properties": {
+                "MiataruConfig": {
+                    "description": "the configuration for this request. please note that it's optional.",
+                    "properties": {
+                        "RequestMiataruDeviceID": {
+                            "default": "6140c3c0-4a7d-40d2-99ab-39414cac3509",
+                            "description": "RequestMiataruDeviceID should be the ID of the device the request is sent from (or an identifier like an URL).",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "RequestMiataruDeviceID"
+                    ],
+                    "type": "object"
+                },
+                "MiataruGetLocation": {
+                    "description": "one or more devices in an array for which the location should be retrieved.",
+                    "items": {
+                        "properties": {
+                            "Device": {
+                                "default": "7b8e6e0ee5296db345162dc2ef652c1350761823",
+                                "description": "the unique device id of a device.",
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "Device"
+                        ],
+                        "type": "object"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "MiataruGetLocation"
+            ],
+            "type": "object"
+        }
+    }
+}

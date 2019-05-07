@@ -1,0 +1,120 @@
+{
+    "title": "Miataru",
+    "description": "The Miataru API is very simple and straight forward. Generally you're posting (HTTP POST) a JSON formatted request to a service method locations and you get back a JSON formatted answer. Please take into consideration that this has the request-for-comment status and that it can change while there's work done on client and server applications. Versioning therefore is done by prepending the version number - /v1/ for version 1 - to the method call.",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/miataru.com/1.0.0/swagger.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "http://service.miataru.com/v1",
+                    "https://service.miataru.com/v1",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "getLocation": {
+            "main": "./lib/actions/getLocation.js",
+            "title": "To retrieve a specific devices latest known location the /GetLocation method is used. Please note that the MiataruConfig portion is optional. RequestMiataruDeviceID should be the ID of the device the request is sent from (or an identifier like an URL).",
+            "description": "To retrieve a specific devices latest known location the /GetLocation method is used. Please note that the MiataruConfig portion is optional. RequestMiataruDeviceID should be the ID of the device the request is sent from (or an identifier like an URL).",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getLocation.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getLocationGeoJSON": {
+            "main": "./lib/actions/getLocationGeoJSON.js",
+            "title": "Retrieves a devices Location in GeoJSON format.",
+            "description": "Retrieves a devices Location in GeoJSON format.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getLocationGeoJSON.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getLocationHistory": {
+            "main": "./lib/actions/getLocationHistory.js",
+            "title": "Location History is stored on the server only if the client told the server to do so using the \"EnableLocationHistory\" setting in the Location Update requests. For transitions of enabling/disabling that functionality - Everytime a Location Update is received by the server with \"EnableLocationHistory=false\" the server removes all stored Location History till that point. There is a server-side setting that controls up to how many Location Updates the server is storing in the Location History before it removes the oldest one. To request the Location History of a particular device the client sends the following POST request to the GetLocationHistory service URL. Please note that the MiataruConfig portion is optional. RequestMiataruDeviceID should be the ID of the device the request is sent from (or an identifier like an URL).",
+            "description": "Location History is stored on the server only if the client told the server to do so using the \"EnableLocationHistory\" setting in the Location Update requests. For transitions of enabling/disabling that functionality - Everytime a Location Update is received by the server with \"EnableLocationHistory=false\" the server removes all stored Location History till that point. There is a server-side setting that controls up to how many Location Updates the server is storing in the Location History before it removes the oldest one. To request the Location History of a particular device the client sends the following POST request to the GetLocationHistory service URL. Please note that the MiataruConfig portion is optional. RequestMiataruDeviceID should be the ID of the device the request is sent from (or an identifier like an URL).",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getLocationHistory.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getVisitorHistory": {
+            "main": "./lib/actions/getVisitorHistory.js",
+            "title": "Visitor History is stored on the server with every request to the location or location history information of a device. There is a server-side setting that controls up to how many Visitors the server is storing in the Visitor History before it removes the oldest one. To request the Visitor History of a particular device the client sends the following POST request to the GetVisitorHistory service URL.",
+            "description": "Visitor History is stored on the server with every request to the location or location history information of a device. There is a server-side setting that controls up to how many Visitors the server is storing in the Visitor History before it removes the oldest one. To request the Visitor History of a particular device the client sends the following POST request to the GetVisitorHistory service URL.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getVisitorHistory.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "updateLocation": {
+            "main": "./lib/actions/updateLocation.js",
+            "title": "This method is used to update the location of a device. The device does not need to be known already to the Miataru server but it rather creates a unique identifier for itself in the client application. This unique identifier, or device ID is then used to address this particular device.",
+            "description": "This method is used to update the location of a device. The device does not need to be known already to the Miataru server but it rather creates a unique identifier for itself in the client application. This unique identifier, or device ID is then used to address this particular device.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/updateLocation.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

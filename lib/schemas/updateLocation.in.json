@@ -1,0 +1,74 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "properties": {
+                "MiataruConfig": {
+                    "description": "the configuration for this request.",
+                    "properties": {
+                        "EnableLocationHistory": {
+                            "default": "False",
+                            "description": "If the client tells the server to store a location history the server automatically disables the pre-configured data time-out behavior that removes location data after a given amount of time. Nevertheless the user is limited to the server-side pre-configured amount of location history entries. This is either True or False.",
+                            "type": "string"
+                        },
+                        "LocationDataRetentionTime": {
+                            "default": "30",
+                            "description": "The LocationDataRetentionTime is the amount of minutes the server will keep that Location Data before it is removed/deleted automatically.",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "EnableLocationHistory",
+                        "LocationDataRetentionTime"
+                    ],
+                    "type": "object"
+                },
+                "MiataruLocation": {
+                    "items": {
+                        "properties": {
+                            "Device": {
+                                "default": "7b8e6e0ee5296db345162dc2ef652c1350761823",
+                                "description": "the unique id of this device. This needs to be unique as it is the only piece of information directly pointing towards this one device. Generating a GUID per device is recommended.",
+                                "type": "string"
+                            },
+                            "HorizontalAccuracy": {
+                                "default": "50",
+                                "description": "the accuracy of this location update in meters",
+                                "type": "string"
+                            },
+                            "Latitude": {
+                                "default": "41.079351",
+                                "description": "latitude of the position that is reported",
+                                "type": "string"
+                            },
+                            "Longitude": {
+                                "default": "-4.394531",
+                                "description": "longitude of the position that is reported",
+                                "type": "string"
+                            },
+                            "Timestamp": {
+                                "default": "1441360863",
+                                "description": "the javascript timestamp of this location update",
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "Device",
+                            "Timestamp",
+                            "Longitude",
+                            "Latitude",
+                            "HorizontalAccuracy"
+                        ],
+                        "type": "object"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "MiataruConfig",
+                "MiataruLocation"
+            ],
+            "type": "object"
+        }
+    }
+}

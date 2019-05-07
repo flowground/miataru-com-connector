@@ -1,0 +1,47 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "properties": {
+                "MiataruConfig": {
+                    "description": "the configuration for this request. please note that it's optional.",
+                    "properties": {
+                        "RequestMiataruDeviceID": {
+                            "default": "6140c3c0-4a7d-40d2-99ab-39414cac3509",
+                            "description": "RequestMiataruDeviceID should be the ID of the device the request is sent from (or an identifier like an URL).",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "RequestMiataruDeviceID"
+                    ],
+                    "type": "object"
+                },
+                "MiataruGetLocationHistory": {
+                    "description": "one device id for which the location history should be retrieved.",
+                    "properties": {
+                        "Amount": {
+                            "default": "10",
+                            "description": "the maximum number of location history entries that are requested.",
+                            "type": "string"
+                        },
+                        "Device": {
+                            "default": "7b8e6e0ee5296db345162dc2ef652c1350761823",
+                            "description": "the device id of which the location history shall be requested",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "Device",
+                        "Amount"
+                    ],
+                    "type": "object"
+                }
+            },
+            "required": [
+                "MiataruGetLocationHistory"
+            ],
+            "type": "object"
+        }
+    }
+}

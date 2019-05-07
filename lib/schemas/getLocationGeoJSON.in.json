@@ -1,0 +1,10 @@
+{
+    "type": "object",
+    "properties": {
+        "deviceID": {
+            "required": true,
+            "type": "string",
+            "default": "7b8e6e0ee5296db345162dc2ef652c1350761823"
+        }
+    }
+}

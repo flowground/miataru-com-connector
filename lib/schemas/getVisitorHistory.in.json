@@ -1,0 +1,32 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "properties": {
+                "MiataruGetVisitorHistory": {
+                    "properties": {
+                        "Amount": {
+                            "default": "10",
+                            "description": "the maximum number of visitor history entries to be retrieved",
+                            "type": "string"
+                        },
+                        "Device": {
+                            "default": "7b8e6e0ee5296db345162dc2ef652c1350761823",
+                            "description": "the device id of which the visitor history is requested",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "Device",
+                        "Amount"
+                    ],
+                    "type": "object"
+                }
+            },
+            "required": [
+                "MiataruGetVisitorHistory"
+            ],
+            "type": "object"
+        }
+    }
+}
